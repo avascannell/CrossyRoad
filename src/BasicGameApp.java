@@ -39,10 +39,15 @@ public class BasicGameApp implements Runnable {
    
 	public BufferStrategy bufferStrategy;
 	public Image astroPic;
+	public Image Car2pic;
+	public Image Car3pic;
+	public Image Car4pic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
-	private Astronaut astro;
+	private Cars Car2;
+	private Cars Car3;
+	private Cars Car4;
 
 
    // Main method definition
@@ -63,9 +68,14 @@ public class BasicGameApp implements Runnable {
        
       //variable and objects
       //create (construct) the objects needed for the game and load up 
-		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
-		astro = new Astronaut(10,100);
+		Car2pic = Toolkit.getDefaultToolkit().getImage("Car2.jpeg"); //load the picture
+		Car2 = new Cars(10,100);
 
+		Car3pic = Toolkit.getDefaultToolkit().getImage("Car3.png"); //load the picture
+		Car3 = new Cars(100,200);
+
+		Car4pic = Toolkit.getDefaultToolkit().getImage("Car4.png"); //load the picture
+		Car4 = new Cars(100,200);
 
 	}// BasicGameApp()
 
@@ -92,7 +102,9 @@ public class BasicGameApp implements Runnable {
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
-		astro.move();
+		Car2.move();
+		Car3.move();
+		Car4.move();
 
 	}
 	
@@ -143,8 +155,9 @@ public class BasicGameApp implements Runnable {
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
       //draw the image of the astronaut
-		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
-
+		g.drawImage(Car2pic, Car2.xpos, Car2.ypos, Car2.width, Car2.height, null);
+		g.drawImage(Car3pic, Car3.xpos, Car3.ypos, Car3.width, Car3.height, null);
+		g.drawImage(Car4pic, Car4.xpos, Car4.ypos, Car4.width, Car4.height, null);
 		g.dispose();
 
 		bufferStrategy.show();
