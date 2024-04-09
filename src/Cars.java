@@ -10,22 +10,50 @@ public class Cars {
     public int width;
     public int height;
     public boolean isAlive;
+    public Rectangle rec;
+
 
     public Cars(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx = 1;
+        dx = 8;
         dy = 0;
         width = 60;
         height = 60;
         isAlive = true;
+        rec = new Rectangle(xpos, ypos, width, height);
+
     }
 
     public void move() {
         xpos = xpos + dx;
         ypos = ypos + dy;
+        rec = new Rectangle(xpos, ypos, width, height);
+
 
     }
+
+    public void wrap() {
+        //wrap east wall
+        if (xpos < 0) {
+            xpos = 1000 - width;
+        }
+        if (xpos > 1000 - width) {
+            xpos = 0;
+        }
+        if (ypos < 0) {
+            ypos = 700 - height;
+        }
+        if (ypos > 700 - height) {
+            ypos = 0;
+        }
+
+        xpos = xpos + dx;
+        ypos = ypos + dy;
+        rec = new Rectangle(xpos, ypos, width, height);
+
+    }
+}
 
 //    private void render() {
 //        Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
@@ -68,4 +96,3 @@ public class Cars {
 //        System.out.println("DONE graphic setup");
 
 //    }
-}

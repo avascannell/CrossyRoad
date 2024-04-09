@@ -42,12 +42,14 @@ public class BasicGameApp implements Runnable {
 	public Image Car2pic;
 	public Image Car3pic;
 	public Image Car4pic;
+	public Image BackgroundPic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Cars Car2;
 	private Cars Car3;
 	private Cars Car4;
+
 
 
    // Main method definition
@@ -75,7 +77,9 @@ public class BasicGameApp implements Runnable {
 		Car3 = new Cars(100,200);
 
 		Car4pic = Toolkit.getDefaultToolkit().getImage("Car4.png"); //load the picture
-		Car4 = new Cars(100,200);
+		Car4 = new Cars(500,70);
+		BackgroundPic = Toolkit.getDefaultToolkit().getImage("backround.jpg"); //load the picture
+		Car4 = new Cars(500,70);
 
 	}// BasicGameApp()
 
@@ -105,6 +109,9 @@ public class BasicGameApp implements Runnable {
 		Car2.move();
 		Car3.move();
 		Car4.move();
+		Car2.wrap();
+		Car3.wrap();
+		Car4.wrap();
 
 	}
 	
@@ -153,6 +160,7 @@ public class BasicGameApp implements Runnable {
 	private void render() {
 		Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
 		g.clearRect(0, 0, WIDTH, HEIGHT);
+		g.drawImage(BackgroundPic, 0, 0, WIDTH, HEIGHT, null);
 
       //draw the image of the astronaut
 		g.drawImage(Car2pic, Car2.xpos, Car2.ypos, Car2.width, Car2.height, null);
