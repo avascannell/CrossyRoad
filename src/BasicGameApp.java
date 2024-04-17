@@ -42,6 +42,7 @@ public class BasicGameApp implements Runnable {
 	public Image Car2pic;
 	public Image Car3pic;
 	public Image Car4pic;
+	public Image Car6pic;
 	public Image BackgroundPic;
 
    //Declare the objects used in the program
@@ -49,6 +50,7 @@ public class BasicGameApp implements Runnable {
 	private Cars Car2;
 	private Cars Car3;
 	private Cars Car4;
+	private Cars Car6;
 
 
 
@@ -78,6 +80,8 @@ public class BasicGameApp implements Runnable {
 
 		Car4pic = Toolkit.getDefaultToolkit().getImage("Car4.png"); //load the picture
 		Car4 = new Cars(500,70);
+		Car6pic = Toolkit.getDefaultToolkit().getImage("Car6.png"); //load the picture
+		Car6 = new Cars(700,375);
 		BackgroundPic = Toolkit.getDefaultToolkit().getImage("backround.jpg"); //load the picture
 		Car4 = new Cars(500,70);
 
@@ -112,6 +116,7 @@ public class BasicGameApp implements Runnable {
 		Car2.wrap();
 		Car3.wrap();
 		Car4.wrap();
+		Car6.wrap();
 
 	}
 	
@@ -166,6 +171,7 @@ public class BasicGameApp implements Runnable {
 		g.drawImage(Car2pic, Car2.xpos, Car2.ypos, Car2.width, Car2.height, null);
 		g.drawImage(Car3pic, Car3.xpos, Car3.ypos, Car3.width, Car3.height, null);
 		g.drawImage(Car4pic, Car4.xpos, Car4.ypos, Car4.width, Car4.height, null);
+		g.drawImage(Car6pic, Car6.xpos, Car6.ypos, Car6.width, Car6.height, null);
 		g.dispose();
 
 		bufferStrategy.show();
