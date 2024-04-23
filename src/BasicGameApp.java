@@ -83,6 +83,7 @@ public class BasicGameApp implements Runnable {
 		Car2 = new Cars(10,100);
 		CarsArray[0] = Car2;
 		CarsArray[0].pic = Car2pic;
+		//car 0 bounce off car 2
 
 		Car3pic = Toolkit.getDefaultToolkit().getImage("Car3.png"); //load the picture
 		Car3 = new Cars(100,200);
@@ -141,12 +142,21 @@ public class BasicGameApp implements Runnable {
 //		Car4.wrap();
 //		Car6.wrap();
 //		Car7.wrap();
-		for(int i = 0; i< CarsArray.length; i++){
+		for(int i = 1; i< CarsArray.length; i=i+2){
 			CarsArray[i].wrap();
 			//if chicken.rec.intescts(CarsArray[i].rec)
 				//gameOveer = true;
 		}
-		Car2.
+		for(int i = 0; i< CarsArray.length; i=i+2){
+			CarsArray[i].bounce();
+		}
+
+		if(CarsArray[0].rec.intersects(CarsArray[2].rec)){
+			if(CarsArray[0].rec.intersects(CarsArray[2].rec) == false);
+
+
+
+
 
 	}
 	

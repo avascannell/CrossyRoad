@@ -55,6 +55,29 @@ public class Cars {
         rec = new Rectangle(xpos, ypos, width, height);
 
     }
+    public void bounce() {
+        if (xpos < 0) {
+            dx = -dx;
+        }
+
+        if (xpos > 1000-width) {
+            dx = -dx;
+        }
+
+        if (ypos < 0) {
+            dy = -dy;
+        }
+
+        if (ypos > 700-height) {
+            dy = -dy;
+        }
+
+        xpos = xpos + dx;
+        ypos = ypos + dy;
+        rec = new Rectangle(xpos, ypos, width, height);
+
+    }
+
 }
 
 //    private void render() {
