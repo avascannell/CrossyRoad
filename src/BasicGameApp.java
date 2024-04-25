@@ -13,6 +13,8 @@ package src;//Basic Game Application
 
 //Graphics Libraries
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.awt.*;
 import java.lang.reflect.Array;
@@ -23,7 +25,7 @@ import javax.swing.JPanel;
 //*******************************************************************************
 // Class Definition Section
 
-public class BasicGameApp implements Runnable {
+public class BasicGameApp implements Runnable, KeyListener {
 
    //Variable Definition Section
    //Declare the variables used in the program 
@@ -48,6 +50,7 @@ public class BasicGameApp implements Runnable {
 	public Image Car6pic;
 	public Image BackgroundPic;
 	public Image Car7pic;
+	public Image ChickenPic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
@@ -57,6 +60,7 @@ public class BasicGameApp implements Runnable {
 	private Cars Car6;
 	private Cars Car7;
 	private Cars[] CarsArray;
+	private Chicken Chicken1;
 
 
 
@@ -109,6 +113,10 @@ public class BasicGameApp implements Runnable {
 		BackgroundPic = Toolkit.getDefaultToolkit().getImage("backround.jpg"); //load the picture
 	//	Car4 = new Cars(500,70);
 
+		ChickenPic  = Toolkit.getDefaultToolkit().getImage("Chicken.png");
+		Chicken1 = new Chicken(450,600);
+
+
 	}// BasicGameApp()
 
    
@@ -131,9 +139,8 @@ public class BasicGameApp implements Runnable {
 	}
 
 
-	public void moveThings()
-	{
-      //calls the move( ) code in the objects
+	public void moveThings() {
+		//calls the move( ) code in the objects
 //		Car2.move();
 //		Car3.move();
 //		Car4.move();
@@ -142,21 +149,20 @@ public class BasicGameApp implements Runnable {
 //		Car4.wrap();
 //		Car6.wrap();
 //		Car7.wrap();
-		for(int i = 1; i< CarsArray.length; i=i+2){
+		for (int i = 1; i < CarsArray.length; i = i + 2) {
 			CarsArray[i].wrap();
 			//if chicken.rec.intescts(CarsArray[i].rec)
-				//gameOveer = true;
+			//gameOveer = true;
 		}
-		for(int i = 0; i< CarsArray.length; i=i+2){
+		for (int i = 0; i < CarsArray.length; i = i + 2) {
 			CarsArray[i].bounce();
 		}
 
-		if(CarsArray[0].rec.intersects(CarsArray[2].rec)){
-			if(CarsArray[0].rec.intersects(CarsArray[2].rec) == false);
+		if (CarsArray[0].rec.intersects(CarsArray[2].rec)) {
+			if (CarsArray[0].rec.intersects(CarsArray[2].rec) == false) ;
 
 
-
-
+		}
 
 	}
 	
@@ -183,6 +189,7 @@ public class BasicGameApp implements Runnable {
       canvas = new Canvas();  
       canvas.setBounds(0, 0, WIDTH, HEIGHT);
       canvas.setIgnoreRepaint(true);
+	  canvas.addKeyListener(this);
    
       panel.add(canvas);  // adds the canvas to the panel.
    
@@ -211,9 +218,11 @@ public class BasicGameApp implements Runnable {
 				g.drawImage(CarsArray[i].pic, CarsArray[i].xpos, CarsArray[i].ypos, CarsArray[i].width, CarsArray[i].height, null);
 				;
 			}
+
 		}else {
 			//draw gameover screen
 		}
+		g.drawImage(ChickenPic, Chicken1.xpos, Chicken1.ypos, Chicken1.width, Chicken1.height, null);
 
       //draw the image of the astronaut
 //		g.drawImage(Car2pic, Car2.xpos, Car2.ypos, Car2.width, Car2.height, null);
@@ -225,5 +234,22 @@ public class BasicGameApp implements Runnable {
 		g.dispose();
 
 		bufferStrategy.show();
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		System.out.println("key pressed: " + e.getKeyChar() + " key Code: "+ e.getKeyCode() );
+
+
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+
 	}
 }
