@@ -244,7 +244,8 @@ public class BasicGameApp implements Runnable, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		System.out.println("key pressed: " + e.getKeyChar() + " key Code: "+ e.getKeyCode() );
-
+//key code for up arrow is box 38
+// key code for down arrow is box 40
 
 	}
 
