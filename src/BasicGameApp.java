@@ -51,6 +51,7 @@ public class BasicGameApp implements Runnable, KeyListener {
 	public Image BackgroundPic;
 	public Image Car7pic;
 	public Image ChickenPic;
+	 public Image GameOverPic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
@@ -112,6 +113,7 @@ public class BasicGameApp implements Runnable, KeyListener {
 
 		BackgroundPic = Toolkit.getDefaultToolkit().getImage("backround.jpg"); //load the picture
 	//	Car4 = new Cars(500,70);
+		GameOverPic = Toolkit.getDefaultToolkit().getImage("gameover.jpg");
 
 		ChickenPic  = Toolkit.getDefaultToolkit().getImage("Chicken.png");
 		Chicken1 = new Chicken(450,600);
@@ -149,6 +151,7 @@ public class BasicGameApp implements Runnable, KeyListener {
 //		Car4.wrap();
 //		Car6.wrap();
 //		Car7.wrap();
+		Chicken1.move();
 		for (int i = 1; i < CarsArray.length; i = i + 2) {
 			CarsArray[i].wrap();
 			//if chicken.rec.intescts(CarsArray[i].rec)
@@ -156,12 +159,17 @@ public class BasicGameApp implements Runnable, KeyListener {
 		}
 		for (int i = 0; i < CarsArray.length; i = i + 2) {
 			CarsArray[i].bounce();
+			if (CarsArray[i].rec.intersects(Chicken1.rec)){
+				gameOver= true;
+			}
+
 		}
 
 		if (CarsArray[0].rec.intersects(CarsArray[2].rec)) {
-			if (CarsArray[0].rec.intersects(CarsArray[2].rec) == false) ;
-
-
+			CarsArray[0].dx = -CarsArray[0].dx;
+			CarsArray[0].dy = -CarsArray[0].dy;
+			CarsArray[2].dx = -CarsArray[2].dx;
+			CarsArray[2].dy = -CarsArray[2].dy;
 		}
 
 	}
@@ -221,6 +229,7 @@ public class BasicGameApp implements Runnable, KeyListener {
 
 		}else {
 			//draw gameover screen
+			g.drawImage(GameOverPic, 0, 0, WIDTH, HEIGHT, null);
 		}
 		g.drawImage(ChickenPic, Chicken1.xpos, Chicken1.ypos, Chicken1.width, Chicken1.height, null);
 
@@ -246,11 +255,31 @@ public class BasicGameApp implements Runnable, KeyListener {
 		System.out.println("key pressed: " + e.getKeyChar() + " key Code: "+ e.getKeyCode() );
 //key code for up arrow is box 38
 // key code for down arrow is box 40
+		if(e.getKeyCode() == 38){
+			System.out.println("up");
+			Chicken1.dy=-5;
+
+		}
+		if(e.getKeyCode() == 40){
+			System.out.println("down");
+			Chicken1.dy=5;
+
+		}
 
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
+		if(e.getKeyCode() == 38){
+			System.out.println("up");
+			Chicken1.dy=0;
+
+		}
+		if(e.getKeyCode() == 40){
+			System.out.println("down");
+			Chicken1.dy=0;
+
+		}
 
 	}
 }

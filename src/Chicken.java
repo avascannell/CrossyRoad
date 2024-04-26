@@ -16,7 +16,7 @@ public class Chicken {
     public Chicken(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx = 8;
+        dx = 0;
         dy = 0;
         width = 100;
         height = 100;
